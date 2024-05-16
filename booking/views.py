@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from .models import *
 import json
-from django.contrib.auth.forms import UserCreationForm
+# from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from .forms import CustomUserCreationForm
 # Create your views here.
 def home(request):
     context = {
@@ -34,9 +35,9 @@ def loginPage(request):
     return render(request, 'booking/login.html', context)
 
 def register(request):
-    form = CreateUserForm()
+    form = CustomUserCreationForm()
     if request.method == "POST":
-        form = CreateUserForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Tạo tài khoản thành công! Hãy đăng nhập.')
