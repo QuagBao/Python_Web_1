@@ -8,7 +8,9 @@ from django.contrib import messages
 from .forms import CustomUserCreationForm
 # Create your views here.
 def home(request):
+    movies = Movie.objects.all()
     context = {
+        'movies':movies,
         'is_logged_in': request.user.is_authenticated,
         'messages': messages.get_messages(request),  # Truyền danh sách các message vào context
     }
