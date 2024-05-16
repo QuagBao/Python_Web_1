@@ -1,9 +1,15 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, JsonResponse
+from .models import *
+import json
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 # Create your views here.
 def home(request):
     movies = Movie.objects.all()
-    context = {'movies':movies
+    context = {
+        'movies':movies,
         'is_logged_in': request.user.is_authenticated,
         'messages': messages.get_messages(request),  # Truyền danh sách các message vào context
     }
