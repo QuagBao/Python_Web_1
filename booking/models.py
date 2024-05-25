@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 import datetime
 
@@ -33,8 +32,9 @@ class Movie(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='coming_soon')
     image = models.ImageField(null=True, blank=True)
     country = models.CharField(max_length=255, default='Unknown')
-    
+    subtitle = models.CharField(max_length=255, default='Unknown')
     genres = models.ManyToManyField(Genre, related_name='movies')
+    trailer = models.URLField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -71,7 +71,6 @@ class Showtime(models.Model):
     hall = models.ForeignKey(Hall, on_delete=models.CASCADE, related_name='showtimes')
     show_date = models.DateField()
     start_time = models.TimeField()
-    end_time = models.TimeField()
     remaining_seats = models.PositiveIntegerField()  # Number of remaining seats in the hall
 
     def __str__(self):
@@ -96,8 +95,3 @@ class Ticket(models.Model):
     def __str__(self):
         return f"Ticket for {self.showtime.movie.title} at {self.showtime.hall.name} on {self.showtime.show_date} {self.showtime.start_time} - Seat {self.seat_number}"
 
-# Đổi form register django
-class CreateUserForm (UserCreationForm):
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password1', 'password2']
