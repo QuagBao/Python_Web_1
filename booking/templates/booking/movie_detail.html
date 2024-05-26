@@ -74,10 +74,250 @@
         </div>
     </div>
 
-    <div class="container mt-5 text-white">
-        <div class="d-flex align-items-center justify-content-center">
-            <h1 style="font-weight: bold;">LỊCH CHIẾU</h1>
+    <div class="container text-white text-center">
+        <h1 style="font-weight: bold;">LỊCH CHIẾU</h1>
+        <div class="shtime-heading d-flex align-items-center justify-content-center text-white pt-5">
+            <div class="swiper-wrapper row d-flex justify-content-center align-items-center">
+                <div class="active swiper-slide col">
+                    <div class="box-item">
+                        <p class="date">24/05</p>
+                        <p class="day">Thứ Sáu</p>
+                    </div>
+                </div>
+                <div class="swiper-slide col">
+                     <div class="box-item">
+                        <p class="date">25/05</p>
+                        <p class="day">Thứ Bảy</p>
+                    </div>
+                </div>
+                <div class="swiper-slide col">
+                    <div class="box-item">
+                       <p class="date">26/05</p>
+                       <p class="day">Chủ Nhật</p>
+                   </div>
+               </div>
+            </div>
+        </div>
+        <div class="shtime-body">
+            <div class="heading d-flex justify-content-between">
+                <h2>DANH SÁCH RẠP</h2>
+                <div class="dropdown sort">
+                    <a class="btn-location text-yellow" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i style="margin-right: 5px;" class="fa-solid fa-location-dot"></i> <span id="selected-location">Hà Nội</span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="#" data-location="Hà Nội">Hà Nội</a></li>
+                        <li><a class="dropdown-item" href="#" data-location="Đà Nẵng">Đà Nẵng</a></li>
+                        <li><a class="dropdown-item" href="#" data-location="Hồ Chí Minh">Hồ Chí Minh</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="shtime-ft">
+            <ul class="cinestar-list">
+                <li class="cinestar-item">
+                    <h4 class="title">Cinestar Quốc Thanh</h4>
+                    <p style="padding-left: 2rem;font-weight: 700;">271 Nguyễn Trãi, Phường Nguyễn Cư Trinh, Quận 1, Thành Phố Hồ Chí Minh</p>
+                    <p style="padding-left: 2rem;font-weight: 700;">Standard</p>
+                    <ul class="list-time row d-flex align-items-center">
+                        <li class="disable item-time col-2">17:15</li>
+                        <li class="disable item-time col-2">18:00</li>
+                        <li class="disable item-time col-2">18:30</li>
+                        <li class="active item-time col-2">19:30</li>
+                        <li class="active item-time col-2">21:45</li>
+                    </ul>
+                </li>
+                <li class="cinestar-item">
+                    <h4 class="title">Cinestar Quốc Thanh</h4>
+                    <p style="padding-left: 2rem;font-weight: 700;">271 Nguyễn Trãi, Phường Nguyễn Cư Trinh, Quận 1, Thành Phố Hồ Chí Minh</p>
+                    <p style="padding-left: 2rem;font-weight: 700;">Standard</p>
+                    <ul class="list-time row d-flex align-items-center">
+                        <li class="disable item-time col-2">17:15</li>
+                        <li class="disable item-time col-2">18:00</li>
+                        <li class="disable item-time col-2">18:30</li>
+                        <li class="active item-time col-2">19:30</li>
+                        <li class="active item-time col-2">21:45</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+
+    <div class="container">
+        <div class="seat-heading text-center">
+            <h1 class="heading text-uppercase">Chọn ghế</h1>
+        </div>
+        <div class="seat-indicator-scroll">
+            <div class="seat-screen text-center">
+                <img src="{% static 'img/img-screen.png' %}" alt="">
+                <div class="txt text-white">Màn hình</div>
+            </div>
+            <div class="seat-main">
+                <div class="seat-table">
+                    <div class="seat-table-inner mx-auto">
+                        <div class="row">
+                            <div class="seat-row d-flex flex-wrap">
+                                <p style="margin-top: 14px;margin-left: -80px;" class="col text-white text-center">A</p>
+                                <div class="disable seat-single col">A14</div>
+                                <div class="seat-single col">A13</div>
+                                <div style="visibility: hidden;" class="seat-single col">A12</div>
+                                <div class="display seat-single col">A11</div>
+                                <div class="active seat-single col">A10</div>
+                                <div class="seat-single col">A09</div>
+                                <div class="seat-single col">A08</div>
+                                <div class="seat-single col">A07</div>
+                                <div class="seat-single col">A06</div>
+                                <div class="seat-single col">A05</div>
+                                <div class="seat-single col">A04</div>
+                                <div style="visibility: hidden;" class="seat-single col">A03</div>
+                                <div class="seat-single col">A02</div>
+                                <div class="seat-single col">A01</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="seat-row d-flex flex-wrap">
+                                <p style="margin-top: 14px;margin-left: -80px;" class="col text-white text-center">A</p>
+                                <div class="seat-single col">A14</div>
+                                <div class="seat-single col">A13</div>
+                                <div style="visibility: hidden;" class="seat-single col">A12</div>
+                                <div class="seat-single col">A11</div>
+                                <div class="seat-single col">A10</div>
+                                <div class="seat-single col">A09</div>
+                                <div class="seat-single col">A08</div>
+                                <div class="seat-single col">A07</div>
+                                <div class="seat-single col">A06</div>
+                                <div class="seat-single col">A05</div>
+                                <div class="seat-single col">A04</div>
+                                <div style="visibility: hidden;" class="seat-single col">A03</div>
+                                <div class="seat-single col">A02</div>
+                                <div class="seat-single col">A01</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="seat-row d-flex flex-wrap">
+                                <p style="margin-top: 14px;margin-left: -80px;" class="col text-white text-center">A</p>
+                                <div class="seat-single col">A14</div>
+                                <div class="seat-single col">A13</div>
+                                <div style="visibility: hidden;" class="seat-single col">A12</div>
+                                <div class="seat-single col">A11</div>
+                                <div class="seat-single col">A10</div>
+                                <div class="seat-single col">A09</div>
+                                <div class="seat-single col">A08</div>
+                                <div class="seat-single col">A07</div>
+                                <div class="seat-single col">A06</div>
+                                <div class="seat-single col">A05</div>
+                                <div class="seat-single col">A04</div>
+                                <div style="visibility: hidden;" class="seat-single col">A03</div>
+                                <div class="seat-single col">A02</div>
+                                <div class="seat-single col">A01</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="seat-row d-flex flex-wrap">
+                                <p style="margin-top: 14px;margin-left: -80px;" class="col text-white text-center">A</p>
+                                <div class="seat-single col">A14</div>
+                                <div class="seat-single col">A13</div>
+                                <div style="visibility: hidden;" class="seat-single col">A12</div>
+                                <div class="seat-single col">A11</div>
+                                <div class="seat-single col">A10</div>
+                                <div class="seat-single col">A09</div>
+                                <div class="seat-single col">A08</div>
+                                <div class="seat-single col">A07</div>
+                                <div class="seat-single col">A06</div>
+                                <div class="seat-single col">A05</div>
+                                <div class="seat-single col">A04</div>
+                                <div style="visibility: hidden;" class="seat-single col">A03</div>
+                                <div class="seat-single col">A02</div>
+                                <div class="seat-single col">A01</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="seat-row d-flex flex-wrap">
+                                <p style="margin-top: 14px;margin-left: -80px;" class="col text-white text-center">A</p>
+                                <div class="seat-single col">A14</div>
+                                <div class="seat-single col">A13</div>
+                                <div style="visibility: hidden;" class="seat-single col">A12</div>
+                                <div class="seat-single col">A11</div>
+                                <div class="seat-single col">A10</div>
+                                <div class="seat-single col">A09</div>
+                                <div class="seat-single col">A08</div>
+                                <div class="seat-single col">A07</div>
+                                <div class="seat-single col">A06</div>
+                                <div class="seat-single col">A05</div>
+                                <div class="seat-single col">A04</div>
+                                <div style="visibility: hidden;" class="seat-single col">A03</div>
+                                <div class="seat-single col">A02</div>
+                                <div class="seat-single col">A01</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="seat-row d-flex flex-wrap">
+                                <p style="margin-top: 14px;margin-left: -80px;" class="col text-white text-center">A</p>
+                                <div class="seat-single col">A14</div>
+                                <div class="seat-single col">A13</div>
+                                <div style="visibility: hidden;" class="seat-single col">A12</div>
+                                <div class="seat-single col">A11</div>
+                                <div class="seat-single col">A10</div>
+                                <div class="seat-single col">A09</div>
+                                <div class="seat-single col">A08</div>
+                                <div class="seat-single col">A07</div>
+                                <div class="seat-single col">A06</div>
+                                <div class="seat-single col">A05</div>
+                                <div class="seat-single col">A04</div>
+                                <div style="visibility: hidden;" class="seat-single col">A03</div>
+                                <div class="seat-single col">A02</div>
+                                <div class="seat-single col">A01</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="seat-note mx-auto mt-5 text-white">
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <div style="background-color: #fff;" class="image-seat">
+                         
+                            </div>
+                            <span>Ghế Chưa Đặt</span>
+                        </div>
+                        <div class="col-4">
+                            <div class="image-seat ">
+                                
+                            </div>
+                            <span>Ghế Chọn</span>
+                        </div>
+                        <div class="col-4">
+                            <div style="background-color: #241f1f; border: 1px solid #fff;" class="image-seat">
+                              
+                            </div>
+                            <span>Ghế Chưa Đặt</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
             
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.swiper-slide');
+        slides.forEach(slide => {
+            slide.addEventListener('click', function() {
+                // Remove active class from all slides
+                slides.forEach(s => s.classList.remove('active'));
+
+                // Add active class to the clicked slide
+                slide.classList.add('active');
+            });
+        });
+        });
+        $(document).ready(function() {
+            $('.dropdown-item').click(function(event) {
+                event.preventDefault(); 
+                var location = $(this).data('location');
+                $('#selected-location').text(location);
+            });
+        });
+    </script>
 {% endblock content %}
