@@ -366,7 +366,25 @@ html,body {
 }
 
 
+.bg-bill {
+    background-color: #241f1f;
+}
 
+
+.container-bill{
+    bottom: 0px;
+    margin-left: -65px;
+    padding-top: 32px !important;
+    padding-bottom: 10px;
+    border-top: .1rem solid rgba(248, 250, 252, .5);
+    padding-left: 25px;
+    width: 1428px !important;
+   
+}
+
+body {
+    overflow-x: hidden;
+}
 
 
 

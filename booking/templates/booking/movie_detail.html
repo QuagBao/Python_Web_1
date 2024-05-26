@@ -299,6 +299,23 @@
             
         </div>
     </div>
+
+    <div class="container-bill mt-5 bg-bill text-white">
+        <div class="row ms-5 me-5">
+            <div class="col-9">
+                <h4 style="font-weight: 900;">DORAEMON LT (P): NOBITA VÀ BẢN GIAO HƯỞNG ĐỊA CẦU</h4>
+                <p>Cinestar Hai Bà Trưng (TP.HCM)</p>
+            </div>
+            <div class="col-3">
+                <div class="price d-flex justify-content-between me-5">
+                    <span><strong>Tạm tính: </strong></span>
+                    <h3 style="margin-top: -6px;">0 VNĐ</h3>
+                   
+                </div>
+                <button style="width: 256px;" class="btn btn-warning ps-5 pe-5"><strong>Đặt vé</strong></button>
+            </div>
+        </div>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
         const slides = document.querySelectorAll('.swiper-slide');
@@ -319,5 +336,12 @@
                 $('#selected-location').text(location);
             });
         });
+        $(document).ready(function() {
+            $('.seat-single').click(function(event) {
+                event.preventDefault(); 
+                $(this).toggleClass('active');
+            });
+        });
     </script>
+    
 {% endblock content %}
