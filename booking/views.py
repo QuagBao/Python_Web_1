@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from .models import *
 import json
-import random
+from collections import defaultdict
 from django.db.models import Q
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout, get_user_model
@@ -20,15 +20,44 @@ def home(request):
 
 def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
-    showtimes = Showtime.objects.filter(movie=movie)
+    showtimes = Showtime.objects.filter(movie=movie).select_related('hall__cinema')
+
+    showtimes_by_date = defaultdict(list)
+
+    for showtime in showtimes:
+        showtimes_by_date[showtime.show_date].append(showtime)
+
+    selected_city = request.GET.get('city')
+    cities = City.objects.all()
+
+    if not selected_city:
+        selected_city = cities.first().name
 
     context = {
         'movie': movie,
-        'showtimes': showtimes,
-    }
+        'showtimes_by_date': dict(showtimes_by_date),
+        'selected_city': selected_city,
+        'cities': cities, 
+    } 
 
     return render(request, 'booking/movie_detail.html', context)
     
+def get_cinemas(request):
+    selected_date = request.GET.get('selected_date')
+    showtimes = Showtime.objects.filter(show_date=selected_date)
+
+    cinemas_info = []
+
+    for showtime in showtimes:
+        cinema_info = {
+            'name': showtime.hall.cinema.name,
+            'address': showtime.hall.cinema.address,
+            'time': showtime.start_time.strftime("%H:%M")
+        }
+        cinemas_info.append(cinema_info)
+
+    return JsonResponse({'cinemas_info': cinemas_info})
+
 def loginPage(request):
     if request.method == 'POST':
         username1 = request.POST.get('username')

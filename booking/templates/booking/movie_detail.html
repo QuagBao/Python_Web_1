@@ -74,10 +74,85 @@
         </div>
     </div>
 
-    <div class="container mt-5 text-white">
-        <div class="d-flex align-items-center justify-content-center">
-            <h1 style="font-weight: bold;">LỊCH CHIẾU</h1>
-            
+    <div class="container text-white text-center">
+        <h1 style="font-weight: bold;">LỊCH CHIẾU</h1>
+        <div class="shtime-heading d-flex align-items-center justify-content-center text-white pt-5">
+            <div class="swiper-wrapper row d-flex justify-content-center align-items-center">
+                {% for date in showtimes_by_date.keys %}
+                    <div class="swiper-slide col">
+                        <div class="box-item" onclick="selectDate('{{ date|date:"Y-m-d" }}')">
+                            <p class="date">{{ date|date:"d/m" }}</p>
+                            <p class="day">{{ date|date:"l" }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="shtime-ft">
+            <ul class="cinestar-list">
+                {% for cinema in cinemas %}
+                <li class="cinestar-item">
+                    <h4 class="title">{{ cinema.name }}</h4>
+                    <p style="padding-left: 2rem;font-weight: 700;">{{ cinema.address }}</p>
+                    <p style="padding-left: 2rem;font-weight: 700;">{{ cinema.standard }}</p>
+                    <ul class="list-time row d-flex align-items-center">
+                        {% for showtime in cinema.showtimes %}
+                        <li class="{% if showtime.active %}active{% else %}disable{% endif %} item-time col-2">{{ showtime.time }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
+
+    <script>
+        function selectDate(selectedDate) {
+            $.ajax({
+                type: 'GET',
+                url: '/get_cinemas/',
+                data: {
+                    selected_date: selectedDate
+                },
+                success: function(response) {
+                    console.log(response);
+                    // Update cinemas list with the response from server
+                    var cinemasInfoHtml = "";
+                    response.cinemas_info.forEach(function(cinemaInfo) {
+                        cinemasInfoHtml += "<li class='cinestar-item'>" +
+                                            "<h4 class='title'>" + cinemaInfo.name + "</h4>" +
+                                            "<p style='padding-left: 2rem;font-weight: 700;'>" + cinemaInfo.address + "</p>" +
+                                            "<p style='padding-left: 2rem;font-weight: 700;'>" + cinemaInfo.time + "</p>" +
+                                            "</li>";
+                    });
+                    $('.cinestar-list').html(cinemasInfoHtml);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.swiper-slide');
+        slides.forEach(slide => {
+            slide.addEventListener('click', function() {
+                // Remove active class from all slides
+                slides.forEach(s => s.classList.remove('active'));
+
+                // Add active class to the clicked slide
+                slide.classList.add('active');
+            });
+        });
+        });
+        $(document).ready(function() {
+            $('.dropdown-item').click(function(event) {
+                event.preventDefault(); 
+                var location = $(this).data('location');
+                $('#selected-location').text(location);
+            });
+        });
+    </script>
 {% endblock content %}
