@@ -386,5 +386,23 @@ body {
     overflow-x: hidden;
 }
 
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Căn lề trái cho các phần tử bên trong */
+}
+.contact-form h6, .contact-form p {
+    margin: 0; /* Loại bỏ margin để không có khoảng cách thêm */
+}
 
-
+.divider {
+    width: 100%;
+    text-align: center;
+    border: none;
+    
+}
+.divider:before {
+    content: '------------------------------------';
+    color: white; /* Màu trắng cho dấu ba chấm */
+    font-size: 40px; /* Kích thước phông chữ */
+}

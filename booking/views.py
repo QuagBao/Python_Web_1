@@ -28,6 +28,9 @@ def movie_detail(request, pk):
     }
 
     return render(request, 'booking/movie_detail.html', context)
+
+def check_out(request):
+    return render(request, 'booking/checkout.html')
     
 def loginPage(request):
     if request.method == 'POST':
